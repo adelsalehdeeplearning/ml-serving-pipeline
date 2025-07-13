@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: iris-model-config
+data:
+  ENVIRONMENT: production
+  MODEL_NAME: iris-classifier
