@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.tar
+*.pt
+*.pkl
+.env
+iris-fastapi-app.tar
