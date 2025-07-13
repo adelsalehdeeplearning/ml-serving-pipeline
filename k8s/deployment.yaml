@@ -13,7 +13,12 @@ spec:
         app: iris-model
     spec:
       containers:
-      - name: iris-model-container      
-        image: adelsaleh/iris-fastapi-app:latest  
+      - name: iris-model-container
+        image: adelsaleh/iris-fastapi-app:latest
         ports:
         - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: iris-model-config
+        - secretRef:
+            name: iris-model-secrets

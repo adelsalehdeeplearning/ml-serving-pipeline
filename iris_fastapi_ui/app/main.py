@@ -8,8 +8,7 @@ import numpy as np
 import requests
 
 app = FastAPI()
-path = 'D:/Downloaded_ws/app/templates'
-templates = Jinja2Templates(directory=path)
+templates = Jinja2Templates(directory="app/templates")
 
 class IrisInput(BaseModel):
     sepal_length: float
@@ -54,16 +53,14 @@ def predict_from_form(
     sepal_length: float = Form(...),
     sepal_width: float = Form(...),
     petal_length: float = Form(...),
-    petal_width: float = Form(...)  
+    petal_width: float = Form(...)
 ):
-    # Use direct function call instead of HTTP request
-    iris_data = IrisInput(
-        sepal_length=sepal_length,
-        sepal_width=sepal_width,
-        petal_length=petal_length,
-        petal_width=petal_width
-    )
-    result = predict(iris_data)
-    prediction = result["prediction"]
-    
+    payload = {
+        "sepal_length": sepal_length,
+        "sepal_width": sepal_width,
+        "petal_length": petal_length,
+        "petal_width": petal_width
+    }
+    response = requests.post("http://localhost:8000/predict", json=payload)
+    prediction = response.json()["prediction"]
     return templates.TemplateResponse("form.html", {"request": request, "prediction": prediction})

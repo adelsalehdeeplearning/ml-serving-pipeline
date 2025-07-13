@@ -13,7 +13,7 @@ templates = Jinja2Templates(directory=path)
 
 class IrisInput(BaseModel):
     sepal_length: float
-    sepal_width: float
+    sepal_width: float  
     petal_length: float
     petal_width: float
 
@@ -54,7 +54,7 @@ def predict_from_form(
     sepal_length: float = Form(...),
     sepal_width: float = Form(...),
     petal_length: float = Form(...),
-    petal_width: float = Form(...)  
+    petal_width: float = Form(...)
 ):
     # Use direct function call instead of HTTP request
     iris_data = IrisInput(
