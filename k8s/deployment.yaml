@@ -13,8 +13,7 @@ spec:
         app: iris-model
     spec:
       containers:
-      - name: iris-model-container
-      ### iam not sure if this is correct, but I am trying to deploy a FastAPI app with Docker
-        image: adelsaleh/iris-fastapi-app:latest  # Replace with your Docker Hub image!
+      - name: iris-model-container      
+        image: adelsaleh/iris-fastapi-app:latest  
         ports:
         - containerPort: 80
